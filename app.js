@@ -15,4 +15,19 @@ app.post('/api/posts', (req, res) => {
     });
 });
 
+app.post('/api/login', (req, res) => {
+    // user
+    const user = {
+        id: 1,
+        username: 'John',
+        email: 'example@email.com'
+    }
+    
+    jwt.sign({user}, 'secret key', (err, token) => {
+        res.json({
+            token
+        });
+    });
+});
+
 app.listen(5000, () => console.log('Server started on port 5000'));
